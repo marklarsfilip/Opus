@@ -1,22 +1,20 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import MusicPlayer from '../components/MusicPlayer'
 import DiceRoll from '../components/DiceRoll'
 
 const Content = () => {
     const [gameStarted, startGame] = useState(false);
-
-    useEffect(() => {
-        console.log('i content: ');
-        console.log(gameStarted);
-    }, [gameStarted]);
-
-    const n = 50; // Or something else
+    const [gameOver, endGame] = useState(false);
 
     return (
-        <div className="flex flex-col flex-wrap grow p-4 bg-peach birdz">
-            <DiceRoll game-started={gameStarted} start-game={startGame} />
-            <MusicPlayer gameStarted={gameStarted} startGame={startGame} />
+        <div className="flex flex-col flex-wrap grow p-4 bg-peach birdz" >
+            {gameOver ? (
+                <h2 className="flex grow mt-8 mb-6 text-4xl font-emoji">You lost! 😥 ⚰</h2>
+            ) : (
+                <DiceRoll gameStarted={gameStarted} startGame={startGame} />
+            )}
+            <MusicPlayer gameStarted={gameStarted} startGame={startGame} gameOver={gameOver} endGame={endGame} />
             <div className="bird-container bird-container--one">
                 <div className="bird bird--one"></div>
             </div>
@@ -32,8 +30,7 @@ const Content = () => {
             <div className="bird-container bird-container--four">
                 <div className="bird bird--four"></div>
             </div>
-        </div>
-    );
+        </div >)
 }
 
 export default Content;

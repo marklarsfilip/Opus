@@ -76,7 +76,8 @@ $dotSize: $diceSize * 0.2;
 }
 
 .dot {
-  background-color: black;
+  background-color: white;
+  border: 2px solid #000;
   border-radius: 50%;
 }
 
@@ -85,9 +86,9 @@ $dotSize: $diceSize * 0.2;
     position: absolute;
     width: $diceSize;
     height: $diceSize;
-    outline: 2px solid #EE4E34;
+    outline: 2px solid #000;
     outline-offset: -2px;
-    background-color: rgba(255, 255, 255, 1);
+    background-color: #f96751ec;
     display: flex;
     justify-content: center;
     align-items: center;

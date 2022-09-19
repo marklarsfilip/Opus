@@ -1,7 +1,12 @@
 import { useState, useEffect } from 'react';
 import { InfinitySpin } from 'react-loader-spinner'
 
-const DiceRoll = () => {
+interface DiceRollProps {
+    gameStarted: boolean;
+    startGame: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+const DiceRoll = ({ gameStarted, startGame }: DiceRollProps) => {
 
     const faces = 6;
     const maxRollTimes = 3;
@@ -32,6 +37,9 @@ const DiceRoll = () => {
     }
 
     const rollDice = () => {
+        if (!gameStarted) {
+            startGame(true);
+        }
         setBtnDisabled(true);
         clearInterval(intrvl);
         let counter: any = Math.floor((Math.random() * maxRollTimes) + 4);
@@ -45,7 +53,7 @@ const DiceRoll = () => {
     }
 
     const dice = (
-        <div className={`z-20 dice-container ${btnDisabled ? 'disabled' : ''}`} onClick={!btnDisabled ? rollDice : () => console.log('relax')}>
+        <div className={`z-20 dice-container ${btnDisabled ? 'disabled' : ''}`} onClick={!btnDisabled ? rollDice : () => console.error('relax.. we are rolling already!')}>
             <div className={`dice face-${diceFace}`}>
                 <div className="face-1">
                     <div className="dot-container">
@@ -99,7 +107,7 @@ const DiceRoll = () => {
     return (
         <>
             <div className="main-container mt-10 mb-5">
-                <h1 className="text-3xl font-bold">Roll the dice to begin!</h1>
+                <h1 className="text-3xl font-bold text-center">{gameStarted ? 'ROLL!!!' : 'Whenever you are ready..'}</h1>
                 <div className="main-dice-container">
                     {dice}
                 </div>
