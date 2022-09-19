@@ -41,7 +41,7 @@ const MusicPlayer = ({ gameStarted, startGame, gameOver, endGame }: MusicPlayerP
     }
 
     return (
-        <div className="flex p-4 bg-peach w-full z-20">
+        <div className="flex bg-peach w-full z-20">
             <audio ref={audioPlayer} controls className="mt-0 m-auto" onPlay={play} onPause={pause}>
                 <source src={soundfile} type="audio/mpeg" />
                 Your browser does not support the audio element.

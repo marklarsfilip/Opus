@@ -106,13 +106,13 @@ const DiceRoll = ({ gameStarted, startGame }: DiceRollProps) => {
 
     return (
         <>
-            <div className="main-container mt-10 mb-5">
+            <div className="main-container mt-4 mb-3">
                 <h1 className="text-3xl font-bold text-center">{gameStarted ? 'ROLL!!!' : 'Whenever you are ready..'}</h1>
                 <div className="main-dice-container">
                     {dice}
                 </div>
             </div>
-            <div className="flex justify-center grow mt-10 text-center">
+            <div className="flex justify-center grow mt-4 text-center">
                 {btnDisabled ? <InfinitySpin color="#EE4E34" /> : helperSymbol()}
             </div>
         </>

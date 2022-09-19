@@ -12,7 +12,7 @@ code {
     monospace;
 }
 
-$diceSize: 200px;
+$diceSize: 180px;
 $dotSize: $diceSize * 0.2;
 
 .main-container {
@@ -21,10 +21,10 @@ $dotSize: $diceSize * 0.2;
 }
 
 .main-dice-container {
-  padding: 40px;
+  padding: 30px;
   display: flex;
   justify-content: center;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
 .dice-container {

@@ -8,9 +8,9 @@ const Content = () => {
     const [gameOver, endGame] = useState(false);
 
     return (
-        <div className="flex flex-col flex-wrap grow p-4 bg-peach birdz" >
+        <div className="flex flex-col flex-wrap grow p-3 bg-peach birdz" >
             {gameOver ? (
-                <h2 className="flex grow mt-8 mb-6 text-4xl font-emoji">You lost! 😥 ⚰</h2>
+                <h2 className="flex grow mt-5 mb-3 text-4xl font-emoji">You lost! 😥 ⚰</h2>
             ) : (
                 <DiceRoll gameStarted={gameStarted} startGame={startGame} />
             )}
