@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState, useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import soundfile from '../assets/Opus.m4a';
 
 interface MusicPlayerProps {
@@ -12,7 +12,6 @@ interface MusicPlayerProps {
 const MusicPlayer = ({ gameStarted, startGame, gameOver, endGame }: MusicPlayerProps) => {
 
     const audioPlayer = useRef<HTMLAudioElement>(null);
-    const [clock, increment] = useState(0);
 
     useEffect(() => {
         if (gameStarted) {
@@ -20,14 +19,10 @@ const MusicPlayer = ({ gameStarted, startGame, gameOver, endGame }: MusicPlayerP
         }
     }, [gameStarted])
 
-    useEffect(() => {
-        if (!gameOver && audioPlayer?.current?.currentTime && audioPlayer?.current?.currentTime > 223) {
-            endGame(true)
-        }
-    }, [clock, endGame, gameOver]);
-
     setInterval(() => {
-        increment(clock + 1)
+        if (audioPlayer?.current?.currentTime && audioPlayer?.current?.currentTime > 224) {
+            endGame(true);
+        }
     }, 1000);
 
     const play = () => {
